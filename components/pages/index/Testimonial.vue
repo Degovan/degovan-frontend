@@ -27,6 +27,18 @@
         background: #F3F2FD;
         padding: 4.125rem 15.625rem 6.5rem;
 
+        @include for-size('lg') {
+            padding: 4.125rem 5.625rem 6.5rem;
+        }
+
+        @include for-size('md') {
+            padding: 4.125rem 2.625rem 6.5rem;
+        }
+
+        @include for-size('md') {
+            padding: 4.125rem 1rem 6.5rem;
+        }
+
         h1.title {
             font-family: $poppins;
             font-weight: 600;
@@ -39,6 +51,10 @@
             display: flex;
             gap: 1rem;
             margin-top: 2.625rem;
+
+            @include for-size('sm') {
+                flex-direction: column;
+            }
 
             .card {
                 border-radius: 10px;
