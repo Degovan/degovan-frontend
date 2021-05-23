@@ -1,0 +1,132 @@
+{
+    "code": 200,
+    "status": "OK",
+    "data": [
+        {
+            "id": 1,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=1",
+            "type": "website"
+        },
+        {
+            "id": 2,
+            "name": "Boruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=2",
+            "type": "website"
+        },
+        {
+            "id": 3,
+            "name": "Saruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=3",
+            "type": "website"
+        },
+        {
+            "id": 4,
+            "name": "Kirito Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=4",
+            "type": "website"
+        },
+        {
+            "id": 5,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=5",
+            "type": "website"
+        },
+        {
+            "id": 6,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=6",
+            "type": "website"
+        },
+        {
+            "id": 7,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=7",
+            "type": "mobile-app"
+        },
+        {
+            "id": 8,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=8",
+            "type": "mobile-app"
+        },
+        {
+            "id": 9,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=9",
+            "type": "mobile-app"
+        },
+        {
+            "id": 10,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=10",
+            "type": "mobile-app"
+        },
+        {
+            "id": 11,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=11",
+            "type": "mobile-app"
+        },
+        {
+            "id": 12,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=12",
+            "type": "mobile-app"
+        },
+        {
+            "id": 13,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=13",
+            "type": "illustration"
+        },
+        {
+            "id": 14,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=14",
+            "type": "illustration"
+        },
+        {
+            "id": 15,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=15",
+            "type": "illustration"
+        },
+        {
+            "id": 16,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=16",
+            "type": "illustration"
+        },
+        {
+            "id": 17,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=17",
+            "type": "illustration"
+        },
+        {
+            "id": 18,
+            "name": "Naruto Uzumaki",
+            "role": "Web Developer",
+            "image": "https://source.unsplash.com/random/500x500?sig=18",
+            "type": "illustration"
+        }
+    ]
+}

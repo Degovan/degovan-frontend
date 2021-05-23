@@ -31,13 +31,18 @@
         }
 
         @include for-size('sm') {
-            padding: 1.25rem 1rem 5rem;
+            padding: 1.25rem 1rem 4rem;
+            margin-top: 50px;
         }
 
         h1 {
             font-size: 2.25rem;
             font-weight: 600;
             text-align: center;
+
+            @include for-size('xs') {
+                font-size: 1.9rem;
+            }
         }
 
         p.desc {

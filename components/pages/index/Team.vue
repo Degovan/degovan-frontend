@@ -3,23 +3,68 @@
         <div class="head">
             <h1 class="title">Team Kami siapa saja?</h1>
             <div class="buttons d-none-mobile">
-                <button><i class="zmdi zmdi-chevron-left"></i></button>
-                <button class="active"><i class="zmdi zmdi-chevron-right"></i></button>
+                <button @click="generateTeamsPosition('left')"><i class="zmdi zmdi-chevron-left"></i></button>
+                <button @click="generateTeamsPosition('right')"><i class="zmdi zmdi-chevron-right"></i></button>
             </div>
         </div>
         <div class="teams">
-            <div class="card" v-for="i in 3" :key="i">
-                <img src="/examples/member.png" alt="">
-                <h4>Dafrin Maulana</h4>
-                <h3>Web Developer</h3>
+            <div class="card" v-for="member in generatedTeams" :key="member.id">
+                <img :src="member.image" alt="">
+                <h4>{{ member.name }}</h4>
+                <h3>{{ member.role }}</h3>
             </div>
         </div>
         <div class="buttons d-none-dekstop">
-            <button><i class="zmdi zmdi-chevron-left"></i></button>
-            <button class="active"><i class="zmdi zmdi-chevron-right"></i></button>
+            <button @click="generateTeamsPosition('left')"><i class="zmdi zmdi-chevron-left"></i></button>
+            <button @click="generateTeamsPosition('right')"><i class="zmdi zmdi-chevron-right"></i></button>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    props: {
+        teams: {
+            type: Array,
+            required: true
+        }
+    },
+    data() {
+        return {
+            dataTeams: this.teams,
+        }
+    },
+    computed: {
+        generatedTeams() {
+            return this.dataTeams;
+        }
+    },
+    methods: {
+        generateTeamsPosition(direction) {
+            let newGeneratedTeams = [];
+
+            if( direction == 'right' ) {
+                this.dataTeams.forEach((member, index) => {
+                    if( index == 0 ) {
+                        newGeneratedTeams[ this.dataTeams.length - 1 ] = member;
+                    } else {
+                        newGeneratedTeams[ index - 1 ] = member;
+                    }
+                });
+            } else if( direction == 'left' ) {
+                this.dataTeams.forEach((member, index) => {
+                    if( index == this.dataTeams.length - 1 ) {
+                        newGeneratedTeams[ 0 ] = member;
+                    } else {
+                        newGeneratedTeams[ index + 1 ] = member;
+                    }
+                });
+            }
+            this.dataTeams = newGeneratedTeams;
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
     section.team {
@@ -51,6 +96,10 @@
                 @include for-size('md') {
                     text-align: center;
                 }
+
+                @include for-size('xs') {
+                    font-size: 1.9rem;
+                }
             }
         }
 
@@ -65,6 +114,10 @@
                 margin-top: 50px;
             }
 
+            @include for-size('sm') {
+                margin-top: 35px;
+            }
+
             @include for-size('xs') {
                 flex-direction: column;
                 gap: 2rem;
@@ -72,6 +125,33 @@
 
             .card {
                 width: 100%;
+                display: none;
+
+                &:nth-child(1) {
+                    display: block;
+                }
+
+                &:nth-child(2) {
+                    display: block;
+                }
+
+                &:nth-child(3) {
+                    display: block;
+                }
+
+                @include for-size('xs') {
+                    &:nth-child(1) {
+                        display: block;
+                    }
+
+                    &:nth-child(2) {
+                        display: none;
+                    }
+
+                    &:nth-child(3) {
+                        display: none;
+                    }
+                }
 
                 img {
                     width: 100%;
@@ -140,8 +220,9 @@
                 font-size: 1.55rem;
                 font-weight: 300;
                 color: $purple;
+                transition: all 300ms ease;
 
-                &.active {
+                &:hover {
                     opacity: 1;
                     cursor: pointer;
                 }

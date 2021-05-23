@@ -31,7 +31,8 @@
         }
 
         @include for-size('xs') {
-            margin-top: unset;
+            margin-top: .75rem;
+            min-height: unset;
         }
 
         .head-text {
@@ -68,10 +69,16 @@
                     font-size: 2.5rem;
                 }
 
+                @include for-size('sm') {
+                    font-size: 2.2rem;
+                    line-height: 46px;
+                }
+
                 @include for-size('xs') {
-                    font-size: 2rem;
-                    line-height: 47.5px;
+                    font-size: 1.75rem;
+                    line-height: 42px;
                     text-align: center;
+                    margin-top: 17.5px;
                 }
             }
 
@@ -123,6 +130,7 @@
             @include for-size('lg') {
                 flex: 5;
             }
+
 
             img {
                 width: 100%;

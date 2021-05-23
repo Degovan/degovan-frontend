@@ -33,7 +33,7 @@ export default {
         }
 
         @include for-size('xs') {
-            height: 10vh;
+            height: 9vh;
         }
 
         h1 {
@@ -41,8 +41,12 @@ export default {
             font-size: 2.25rem;
             font-weight: 300;
 
-            @include for-size('xs') {
+            @include for-size('sm') {
                 font-size: 1.7rem;
+            }
+
+            @include for-size('xs') {
+                font-size: 1.5rem;
             }
 
             &::first-letter {

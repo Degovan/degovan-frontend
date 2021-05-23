@@ -1,10 +1,10 @@
 <template>
     <div>
         <Hero />
-        <Portofolio />
+        <Portofolio :portofolios="portofolios" />
         <Specialist />
-        <Team />
-        <Testimonial />
+        <Team :teams="teams" />
+        <Testimonial :testimonials="testimonials" />
     </div>
 </template>
 
@@ -16,6 +16,17 @@ import Team from '~/components/pages/index/Team';
 import Testimonial from '~/components/pages/index/Testimonial';
 
 export default {
+    async asyncData({ $axios }) {
+        const portofolios = await $axios.get('/data/portofolios.json');
+        const teams = await $axios.get('/data/teams.json');
+        const testimonials = await $axios.get('/data/testimonials.json');
+
+        return { 
+            portofolios: portofolios.data.data,
+            teams: teams.data.data,
+            testimonials: testimonials.data.data
+        }
+    },
     components: {
         Hero, Portofolio, Specialist, Team, Testimonial
     }    

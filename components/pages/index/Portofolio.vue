@@ -3,18 +3,57 @@
         <div class="head">
             <h2 class="title">Portofolio</h2>
             <ul class="tabs">
-                <li class="active">Website</li>
-                <li>Mobile Apps</li>
-                <li>Illustration</li>
+                <li :class="selectedType == type.id ? 'active' : ''" v-for="type in types" :key="type.id" @click="setSelectedType(type.id)">{{ type.name }}</li>
             </ul>
         </div>
         <div class="portofolios">
-            <div class="card" v-for="i in 6" :key="i">
-                <img src="/examples/portofolio.png" alt="">
+            <div class="card" v-for="portofolio in getPortofolioByType" :key="portofolio.id">
+                <img :src="portofolio.image" alt="">
             </div>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    props: {
+        portofolios: {
+            type: Array,
+            required: true,
+        }
+    },
+    data() {
+        return {
+            types: [
+                {
+                    id: 'website',
+                    name: 'Website'
+                },
+                {
+                    id: 'mobile-app',
+                    name: 'Mobile App'
+                },
+                {
+                    id: 'illustration',
+                    name: 'Illustration'
+                }
+            ],
+            selectedType: 'website',
+        }
+    },
+    computed: {
+        getPortofolioByType() {
+            let data = this.portofolios.filter((e) => e.type == this.selectedType);
+            return data;
+        }
+    },
+    methods: {
+        setSelectedType(type) {
+            this.selectedType = type;
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
     section.portofolio {
@@ -36,6 +75,10 @@
                 font-weight: 600;
                 color: $dark-purple;
                 font-size: 2.25rem;
+
+                @include for-size('xs') {
+                    font-size: 1.9rem;
+                }
             }
 
             ul.tabs {
@@ -48,11 +91,21 @@
                     margin-top: 1.15rem;
                 }
 
+                @include for-size('sm') {
+                    margin-top: 2rem;
+                }
+
+                @include for-size('xs') {
+                    margin-top: 1.5rem;
+                }
+
                 li {
                     color: #828282;
                     font-size: 1.125rem;
                     font-weight: 400;
                     text-align: center;
+                    cursor: pointer;
+                    transition: all 350ms ease;
 
                     @include for-size('sm') {
                         font-size: .9rem;
@@ -85,36 +138,35 @@
             display: grid;
             gap: 1.2rem;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            margin-top: 96px;
+            margin-top: 50px;
 
             @include for-size('lg') {
-                margin-top: 55px;
+                margin-top: 40px;
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
 
             @include for-size('sm') {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                margin-top: 37.5px;
             }
 
             .card {
                 overflow: hidden;
                 border-radius: 10px;
                 cursor: pointer;
+                transition: all 200ms ease;
 
                 img {
                     width: 100%;
+                    height: 283px;
                     transition: all 400ms ease;
+                    object-fit: cover;
+                    object-position: center;
 
                     &:hover {
                         transform: scale(1.1);
                     }
                 }
-            }
-        }
-    }
-
-    @include for-size('lg') {
-        section.portofolio {
-            .portofolios {
             }
         }
     }

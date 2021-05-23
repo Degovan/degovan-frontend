@@ -2,25 +2,58 @@
     <section class="testimonial">
         <h1 class="title">Dengarkan apa kata client kami</h1>
         <div class="testimonials">
-            <div class="card" v-for="i in 2" :key="i">
-                <p class="testimonial-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit a est enim luctus adipiscing vel ullamcorper elementum pharetra. Metus, aliquam pulvinar lectus neque eu elit. Quisque sagittis est gravida eget molestie consectetur donec purus, lobortis. Scelerisque lacus, quis orci blandit risus.</p>
+            <div class="card" v-for="testimonial in displayedTestimonial" :key="testimonial.id">
+                <p class="testimonial-text">{{ testimonial.testimonial }}</p>
                 <div class="user">
-                    <img src="/examples/user-testimonial.png" alt="" class="profile">
+                    <img :src="testimonial.user.image" alt="" class="profile">
                     <div class="detail">
-                        <h4 class="name">Haven Gerrad</h4>
-                        <span class="role">Ceo as  Coca Cola</span>
+                        <h4 class="name">{{ testimonial.user.name }}</h4>
+                        <span class="role">{{ testimonial.user.role }}</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bullets">
-            <span class="bullet active"></span>
-            <span class="bullet"></span>
-            <span class="bullet"></span>
-            <span class="bullet"></span>
+            <span :class="selectedTestimonial == testimonial.id ? 'active' : ''" class="bullet" @click="setSelectedTestimonial(testimonial.id)" v-for="testimonial in testimonials" :key="testimonial.id"></span>
         </div>
     </section>
 </template>
+
+<script>
+export default {
+    props: {
+        testimonials: {
+            type: Array,
+            required: true
+        }
+    },
+    data() {
+        return {
+            selectedTestimonial: 1,
+        }
+    },
+    computed: {
+        displayedTestimonial() {
+            let testimonials = this.testimonials.filter((e) => {
+                return e.id == this.selectedTestimonial;
+            });
+
+            if( this.testimonials.length - 1 == this.testimonials.indexOf(testimonials[0]) ) {
+                testimonials.push(this.testimonials[0]);
+            } else {
+                testimonials.push(this.testimonials[ this.testimonials.indexOf(testimonials[0]) + 1 ]);
+            }
+
+            return testimonials;
+        }
+    },
+    methods: {
+        setSelectedTestimonial(id) {
+            this.selectedTestimonial = id;
+        }
+    }
+}
+</script>
 
 <style lang="scss" scoped>
     section.testimonial {
@@ -45,6 +78,10 @@
             line-height: 45px;
             text-align: center;
             font-size: 2.25rem;
+
+            @include for-size('xs') {
+                font-size: 1.9rem;
+            }
         }
 
         .testimonials {
@@ -61,6 +98,26 @@
                 box-shadow: 0px 100px 80px rgba(94, 84, 251, .07), 0px 41.78px 33.4px rgba(94, 84, 251, .0503), 0px 22.34px 17.87px rgba(94, 84, 251, .0417), 0px 12.52px 10.02px rgba(94, 84, 251, .035), 0px 6.65px 5.32px rgba(94, 84, 251, .0283), 0px 2.77px 2.21px rgba(94, 84, 251, .0197);
                 padding: 40px;
                 background: #FFFFFF;
+                display: none;
+
+                &:nth-child(1) {
+                    display: block;
+                }
+
+                &:nth-child(2) {
+                    display: block;
+                }
+
+                @include for-size('sm') {
+                    &:nth-child(1) {
+                        display: block;
+                    }
+
+                    &:nth-child(2) {
+                        display: none;
+                    }
+                }
+                
 
                 p {
                     font-family: $poppins;
@@ -79,6 +136,8 @@
                     img {
                         width: 60px;
                         height: 60px;
+                        object-fit: cover;
+                        object-position: center;
                         border-radius: 30px;
                     }
 
@@ -120,10 +179,12 @@
                 height: 10px;
                 background: $purple;
                 border-radius: 10px;
+                cursor: pointer;
 
                 &.active {
                     margin-right: 6px;
                     width: 78px;
+                    cursor: default;
                 }
             }
         }

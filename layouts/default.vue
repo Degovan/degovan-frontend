@@ -26,5 +26,13 @@ export default {
 	#app {
 		margin-top: 15vh;
 		overflow: hidden;
+
+		@include for-size('md') {
+			margin-top: 13vh;
+		}
+
+		@include for-size('xs') {
+			margin-top: 9vh;
+	    }
 	}
 </style>

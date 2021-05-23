@@ -39,6 +39,10 @@ export default {
                 font-size: 24px;
                 line-height: 45px;
                 color: $purple;
+
+                @include for-size('sm') {
+                    font-size: 20px;
+                }
             }
 
             a {
@@ -52,9 +56,18 @@ export default {
                 display: flex;
                 align-items: center;
 
+                @include for-size('sm') {
+                    font-size: 16.5px;
+                }
+
                 i {
                     margin-right: 13px;
                     font-size: 2rem;
+
+                    @include for-size('sm') {
+                        font-size: 1.65rem;
+                        margin-right: 11px;
+                    }
                 }
             }
 
@@ -72,6 +85,10 @@ export default {
                 font-size: 14px;
                 line-height: 45px;
                 color: #828282;
+
+                @include for-size('sm') {
+                    font-size: 13.5px;
+                }
             }
         }
     }
