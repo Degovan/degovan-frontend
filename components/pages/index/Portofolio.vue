@@ -3,12 +3,12 @@
         <div class="head">
             <h2 class="title">Portofolio</h2>
             <ul class="tabs">
-                <li :class="selectedType == type.id ? 'active' : ''" v-for="type in types" :key="type.id" @click="setSelectedType(type.id)">{{ type.name }}</li>
+                <li :class="selectedType == category.id ? 'active' : ''" v-for="category in categories" :key="category.id" @click="setSelectedType(category.id)">{{ category.name }}</li>
             </ul>
         </div>
         <div class="portofolios">
             <div class="card" v-for="portofolio in getPortofolioByType" :key="portofolio.id">
-                <img :src="portofolio.image" alt="">
+                <img :src="portofolio.images_url" alt="">
             </div>
         </div>
     </section>
@@ -20,30 +20,24 @@ export default {
         portofolios: {
             type: Array,
             required: true,
+        },
+        categories: {
+            type: Array,
+            required: true,
         }
     },
     data() {
         return {
-            types: [
-                {
-                    id: 'website',
-                    name: 'Website'
-                },
-                {
-                    id: 'mobile-app',
-                    name: 'Mobile App'
-                },
-                {
-                    id: 'illustration',
-                    name: 'Illustration'
-                }
-            ],
-            selectedType: 'website',
+            selectedType: this.categories ? this.categories[0].id : '',
         }
     },
     computed: {
         getPortofolioByType() {
-            let data = this.portofolios.filter((e) => e.type == this.selectedType);
+            let data = this.portofolios.filter((e) => {
+                console.log(e);
+                console.log(this.selectedType);
+                return e.category_id == this.selectedType;
+            });
             return data;
         }
     },

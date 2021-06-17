@@ -11,7 +11,7 @@
             <div class="card" v-for="member in generatedTeams" :key="member.id">
                 <img :src="member.image" alt="">
                 <h4>{{ member.name }}</h4>
-                <h3>{{ member.role }}</h3>
+                <h3>{{ member.part }}</h3>
             </div>
         </div>
         <div class="buttons d-none-dekstop">

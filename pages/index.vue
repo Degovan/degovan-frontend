@@ -1,7 +1,7 @@
 <template>
     <div>
         <Hero />
-        <Portofolio :portofolios="portofolios" />
+        <Portofolio :portofolios="portofolios" :categories="categories" />
         <Specialist />
         <Team :teams="teams" />
         <Testimonial :testimonials="testimonials" />
@@ -17,14 +17,16 @@ import Testimonial from '~/components/pages/index/Testimonial';
 
 export default {
     async asyncData({ $axios }) {
-        const portofolios = await $axios.get('/data/portofolios.json');
-        const teams = await $axios.get('/data/teams.json');
-        const testimonials = await $axios.get('/data/testimonials.json');
+        const portofolios = await $axios.get('http://api.degovan.com/api/portofolio');
+        const teams = await $axios.get('http://api.degovan.com/api/member');
+        const testimonials = await $axios.get('http://api.degovan.com/api/testimonial');
+        const categories = await $axios.get('http://api.degovan.com/api/category');
 
         return { 
-            portofolios: portofolios.data.data,
-            teams: teams.data.data,
-            testimonials: testimonials.data.data
+            portofolios: portofolios.data.portofolios,
+            teams: teams.data.members,
+            testimonials: testimonials.data.testimonials,
+            categories: categories.data
         }
     },
     components: {

@@ -5,10 +5,10 @@
             <div class="card" v-for="testimonial in displayedTestimonial" :key="testimonial.id">
                 <p class="testimonial-text">{{ testimonial.testimonial }}</p>
                 <div class="user">
-                    <img :src="testimonial.user.image" alt="" class="profile">
+                    <img :src="testimonial.picture" alt="" class="profile">
                     <div class="detail">
-                        <h4 class="name">{{ testimonial.user.name }}</h4>
-                        <span class="role">{{ testimonial.user.role }}</span>
+                        <h4 class="name">{{ testimonial.name }}</h4>
+                        <span class="role">{{ testimonial.role }}</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@ export default {
     },
     data() {
         return {
-            selectedTestimonial: 1,
+            selectedTestimonial: this.testimonials ? this.testimonials[0].id : '',
         }
     },
     computed: {
